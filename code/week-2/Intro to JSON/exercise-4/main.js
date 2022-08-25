@@ -1,0 +1,42 @@
+let animals = [
+    {
+        name: "",
+        weight: "",
+        weightUnit: "",
+        nation: "",
+        endangered: true,
+        foodMenu: [""],
+        mutualAnimalsFoody: [],
+        delicious: 3,
+    },
+    {
+        name: "cow",
+        weight: "400",
+        weightUnit: "",
+        nation: "",
+        endangered: true,
+        foodMenu: [""],
+        mutualAnimalsFoody: [],
+        delicious: 3,
+    },
+    {
+        name: "",
+        weight: "",
+        weightUnit: "",
+        nation: "",
+        endangered: true,
+        foodMenu: [""],
+        mutualAnimalsFoody: [],
+        delicious: 3,
+    },
+    {
+        name: "",
+        weight: "",
+        weightUnit: "",
+        nation: "",
+        endangered: true,
+        foodMenu: [""],
+        mutualAnimalsFoody: [],
+        delicious: 3,
+    }
+];
