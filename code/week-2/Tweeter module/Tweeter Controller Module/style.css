@@ -1,6 +1,10 @@
 body{
     background-color: #ecf0f1;
+    background-image: url("https://miro.medium.com/max/1050/1*lK-lzXrUD-4mxr_3IZH28w.jpeg");
     font-family: 'Balthazar', serif;
+    background-repeat: no-repeat;
+    background-size: 100% 250px;
+    ;
 }
 
 #container{

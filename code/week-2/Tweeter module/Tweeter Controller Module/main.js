@@ -22,6 +22,7 @@ function autuSizeTextAreaListner() {
         function (event) {
             if (event.target.tagName.toLowerCase() !== "textarea") return;
         },
+        //if in future want to add some hight flex to text erea - put it here.
         false
     );
 }
@@ -34,7 +35,11 @@ function clickListenerToAddPost() {
         const postText = inputElement.val();
         inputElement.val("");
         console.log(postText, "post text");
-        tweeterManager.addPost(postText);
+        if (postText) {
+            tweeterManager.addPost(postText);
+        } else {
+            alert("pls insert post input ");
+        }
         console.log(
             tweeterManager.getPosts(),
             "posts and comments after adding post"
@@ -83,7 +88,11 @@ function clickListenerToAddComment() {
         console.log(postId, "postId");
         const commentText = $(this).siblings("textarea").val();
         console.log(commentText, "commentText");
-        tweeterManager.addComment(postId, commentText);
+        if (commentText) {
+            tweeterManager.addComment(postId, commentText);
+        } else {
+            alert("pls insert comment input ");
+        }
         console.log(
             tweeterManager.getPosts(),
             "posts and comments after adding comment"
