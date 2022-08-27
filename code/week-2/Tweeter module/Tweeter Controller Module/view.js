@@ -8,11 +8,16 @@ const Renderer = () => {
 
     function cleanPostsFromDom() {
         $(".post").remove();
+        $(".last-post").remove();
     }
     function addPostsToDom(posts) {
-        posts.forEach((post) => {
+        let classPost = "post";
+        posts.forEach((post, idx, array) => {
+            if (idx === posts.length - 1) {
+                classPost = "last-post";
+            }
             $("#posts").append(
-                `<div class="post" id=${post.id}>
+                `<div class=${classPost} post id=${post.id}>
                 <span class="post-text">${(post.id, post.text)}</span>
                 <br><br>
                 </div>`
