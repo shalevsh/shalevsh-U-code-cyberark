@@ -27,10 +27,11 @@ const Renderer = () => {
                 );
             });
             $(`#${post.id}`).append(
-                `<input type="text" placeholder="Pls write some comment ..." class="input-comment">`
+                `
+                <input type="submit" value="Comment" class="comment-submit">`
             );
             $(`#${post.id}`).append(
-                `<input type="submit" value="Comment" class="comment-submit">`
+                `<textarea type="text" placeholder="Write some comment ..." class="input-comment" style="width: 451px;height: 16px;"></textarea>`
             );
         });
     }

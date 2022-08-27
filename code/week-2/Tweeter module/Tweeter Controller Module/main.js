@@ -13,12 +13,26 @@ clickListenerToDelete();
 //on adding comment
 clickListenerToAddComment();
 
+//listener for flexible input
+autuSizeTextAreaListner();
 
-function clickListenerToAddPost(){
+function autuSizeTextAreaListner() {
+    document.addEventListener(
+        "input",
+        function (event) {
+            if (event.target.tagName.toLowerCase() !== "textarea") return;
+        },
+        false
+    );
+}
+
+function clickListenerToAddPost() {
     $("body").on("click", "#post", function () {
         console.log("Add Post");
         console.log("____________");
-        const postText = $(this).siblings("input").val();
+        const inputElement = $(this).siblings("textarea");
+        const postText = inputElement.val();
+        inputElement.val("");
         console.log(postText, "post text");
         tweeterManager.addPost(postText);
         console.log(
@@ -26,11 +40,10 @@ function clickListenerToAddPost(){
             "posts and comments after adding post"
         );
         renderer.renderPosts(tweeterManager.getPosts());
-    })
+    });
 }
 
 function clickListenerToDelete() {
-
     $("body").on("click", ".fa-trash", function () {
         let postId;
         let commentId;
@@ -68,7 +81,7 @@ function clickListenerToAddComment() {
         console.log("____________");
         const postId = $(this).parent().attr("id");
         console.log(postId, "postId");
-        const commentText = $(this).siblings("input").val();
+        const commentText = $(this).siblings("textarea").val();
         console.log(commentText, "commentText");
         tweeterManager.addComment(postId, commentText);
         console.log(
