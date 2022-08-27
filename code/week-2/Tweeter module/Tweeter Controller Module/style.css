@@ -21,7 +21,8 @@ body{
 #input{
     grid-area: i;
     padding: 10px;
-    font-size: 1.5vw;
+    font-weight: bold;
+    font-size: large;
 }
 
 #posts{
@@ -53,6 +54,7 @@ body{
 
 .post-text{
     font-weight: bold;
+    font-size: xx-large;
 }
 
 .comments{
@@ -81,4 +83,7 @@ body{
 }
 .input-comment{
   /* width: 200px; */
+}
+.fa{
+    float: right;
 }

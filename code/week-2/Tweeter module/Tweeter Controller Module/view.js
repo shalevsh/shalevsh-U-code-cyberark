@@ -12,9 +12,10 @@ const Renderer = () => {
     function addPostsToDom(posts) {
         posts.forEach((post) => {
             $("#posts").append(
-                `<div class="post" "post-text" id=${post.id}>${
-                    (post.id, post.text)
-                }</div>`
+                `<div class="post" id=${post.id}>
+                <span class="post-text">${(post.id, post.text)}</span>
+                <br><br>
+                </div>`
             );
 
             const comments = post.comments;
@@ -35,13 +36,14 @@ const Renderer = () => {
     }
 
     function addTrashIconToPosts() {
+        $(".post").prepend(`<br>`);
         $(".post").prepend(`<i class="fa fa-trash" aria-hidden="true"></i>`);
     }
 
     function addTrashIconToComments() {
         $(".comments").append(`<i class="fa fa-trash" aria-hidden="true"></i>`);
     }
-    
+
     return {
         renderPosts,
     };
