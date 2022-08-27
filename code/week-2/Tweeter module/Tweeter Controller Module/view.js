@@ -1,7 +1,7 @@
 const Renderer = () => {
-    const renderPosts = function (posts) {
+    const renderPosts = function (posts, animationFlag) {
         cleanPostsFromDom();
-        addPostsToDom(posts);
+        addPostsToDom(posts, animationFlag);
         addTrashIconToPosts();
         addTrashIconToComments();
     };
@@ -10,11 +10,13 @@ const Renderer = () => {
         $(".post").remove();
         $(".last-post").remove();
     }
-    function addPostsToDom(posts) {
-        let classPost = "post";
-        posts.forEach((post, idx, array) => {
-            if (idx === posts.length - 1) {
+    function addPostsToDom(posts, animationFlag) {
+        posts.forEach((post, idx) => {
+            const comments = post.comments;
+            if (idx === 0 && post.comments.length === 0 && animationFlag) {
                 classPost = "last-post";
+            } else {
+                classPost = "post";
             }
             $("#posts").append(
                 `<div class=${classPost} post id=${post.id}>
@@ -23,8 +25,7 @@ const Renderer = () => {
                 </div>`
             );
 
-            const comments = post.comments;
-            comments.forEach((comment) => {
+            comments.forEach((comment, idx) => {
                 $(`#${post.id}`).append(
                     `<div class="comments" id=${comment.id}>${
                         (comment.id, comment.text)
@@ -44,6 +45,10 @@ const Renderer = () => {
     function addTrashIconToPosts() {
         $(".post").prepend(`<br>`);
         $(".post").prepend(`<i class="fa fa-trash" aria-hidden="true"></i>`);
+        $(".last-post").prepend(`<br>`);
+        $(".last-post").prepend(
+            `<i class="fa fa-trash" aria-hidden="true"></i>`
+        );
     }
 
     function addTrashIconToComments() {

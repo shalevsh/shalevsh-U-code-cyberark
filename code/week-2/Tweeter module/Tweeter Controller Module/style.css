@@ -82,12 +82,14 @@ body{
     word-break: break-all;
 }
 
+
 .comments{
     margin-left: 10px;
     margin: 10px;
     border-style: groove;
     word-break: break-all;
 }
+
 
 .delete{
     cursor: pointer;

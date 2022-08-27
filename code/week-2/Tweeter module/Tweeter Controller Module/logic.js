@@ -5,7 +5,7 @@ const TweeterModule = () => {
     const getPosts = () => _posts;
 
     const addPost = (postText) =>
-        _posts.push({ text: postText, id: "p" + _postId++, comments: [] });
+        _posts.unshift({ text: postText, id: "p" + _postId++, comments: [] });
 
     const removePost = (postId) =>
         (_posts = _posts.filter((post) => post.id !== postId));
