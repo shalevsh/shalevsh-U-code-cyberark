@@ -88,6 +88,9 @@ body{
     margin: 10px;
     border-style: groove;
     word-break: break-all;
+    margin: 10px;
+    border-radius: 5px;
+    padding: 10px;
 }
 
 
