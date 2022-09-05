@@ -1,16 +1,36 @@
 "use strict";
-function print_numbers(numbers) {
-    if (Array.isArray(numbers)) {
-        console.log("Array: " + numbers);
+class Numbers {
+    constructor(numbers) {
+        this.arrayOfNumbers = numbers;
     }
-    else if (typeof numbers === 'string') {
-        console.log('string: ' + numbers);
+    addNumber(number) {
+        this.arrayOfNumbers.push(number);
     }
-    else if (typeof numbers === 'number') {
-        console.log('number: ' + numbers);
+    sum() {
+        let total = 0;
+        this.arrayOfNumbers.forEach(elem => {
+            if (typeof elem === 'string' || typeof elem === 'number') {
+                total += this.getNumValue(elem);
+            }
+        });
+        return total;
+    }
+    getNumValue(val) {
+        if (typeof val === 'string') {
+            const num = parseInt(val);
+            return !isNaN(num) ? num : 0;
+        }
+        else {
+            return val;
+        }
     }
 }
-print_numbers(972528684411);
-print_numbers([972528684411, 9725242223]);
-print_numbers("052863423243");
-print_numbers(["052343434286", "0547734343"]);
+const numbers1 = new Numbers(["test", "22"]);
+numbers1.addNumber("55");
+numbers1.addNumber("block");
+numbers1.addNumber("9");
+const numbers2 = new Numbers([23]);
+numbers2.addNumber(433);
+numbers2.addNumber(11);
+console.log(`1: ${numbers1.sum()}`);
+console.log(`2: ${numbers2.sum()}`);
