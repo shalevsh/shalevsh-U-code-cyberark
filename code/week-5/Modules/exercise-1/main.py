@@ -5,6 +5,15 @@
 import calendar
 year1 = 2010
 year2 = 2020
+
 # display the calendar
 print(calendar.isleap(year1))
 print(calendar.isleap(year2))
+END_YEAR = 2080
+START_YEAR = 2020
+counter = 0
+for year in range(START_YEAR, END_YEAR+1):
+    if (calendar.isleap(year)):
+        counter += 1
+
+print(counter)
