@@ -8,7 +8,7 @@ def get_fibonacci_number_by_index(index):
         return get_fibonacci_number_by_index(index-2)+get_fibonacci_number_by_index(index-1)
 
 
-@pytest.mark.parametrize("index, fibonacci_number", [(1, 0), (2, 1), (3, 1), (5, 4), (16, 610)])
+@pytest.mark.parametrize("index, fibonacci_number", [(1, 0), (2, 1), (3, 1), (5, 3),(5, 4)])
 def test_fibonacci_func(index, fibonacci_number):
     assert get_fibonacci_number_by_index(
         index) == fibonacci_number, "checks the fibonacci function "
