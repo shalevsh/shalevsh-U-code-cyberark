@@ -38,5 +38,14 @@ async def get_price(name):
     return {"price": None}
 
 
+@app.get("/store/buy/{name}")
+async def buy_item(name):
+    for item in store:
+        if item['name'] == name:
+            if item['inventory'] > 0:
+                item['inventory'] -= 1
+                return item
+    return {"error": "item not in stock"}
+
 if __name__ == "__main__":
     uvicorn.run("server:app", host="0.0.0.0", port=8000, reload=True)
