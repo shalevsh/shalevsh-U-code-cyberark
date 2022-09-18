@@ -4,6 +4,12 @@ from fastapi.staticfiles import StaticFiles
 from fastapi.responses import FileResponse
 import requests
 
+store = [
+    {"name": "table", "inventory": 3, "price": 800},
+    {"name": "chair", "inventory": 16, "price": 120},
+    {"name": "couch", "inventory": 1, "price": 1200},
+    {"name": "picture frame", "inventory": 31, "price": 70}
+]
 
 app = FastAPI()
 
@@ -16,26 +22,20 @@ async def root():
     return FileResponse('./static/download.jpeg')
 
 
-@app.get("/book/{name}")
-async def get_book(name):
-    res = requests.get(
-        'https://www.googleapis.com/books/v1/volumes?q={}'.format(name))
-    return res.json()
+# @app.get("/book/{name}")
+# async def get_book(name):
+#     res = requests.get(
+#         'https://www.googleapis.com/books/v1/volumes?q={}'.format(name))
+#     return res.json()
 
 
-@app.get('/sanity')
-def maps():
-    return "Server is up and running smoothly"
+@app.get("/store/{name}")
+async def get_price(name):
+    for s in store:
+        if s['name'] == name:
+            return {"price": s['price']}
 
-
-@app.get('/shoobi')
-def shoobi():
-    return "This here is the shoobi *route*"
-
-
-@app.get("/landing/{username}")
-async def greet_user(username):
-    return {"message": "Hi there {}".format(username)}
+    return {"price": None}
 
 
 if __name__ == "__main__":
